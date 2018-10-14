@@ -1,3 +1,10 @@
+/* gu ji ming tian jiu kan bu dao zhe xie dai ma le
+ * yin wei ming tian chong gou
+ * GGWP
+ *
+ *
+ * */
+
 #include <bits/stdc++.h>
 #include "mygraph.h"
 using namespace std;
@@ -5,6 +12,7 @@ using namespace std;
 graph_t G;
 
 void read_code(istream&, string&);
+void find_func(const string&);
 void parsing_func(const string&);
 
 int main(int argc, char** argv) {
@@ -16,8 +24,24 @@ int main(int argc, char** argv) {
     return 0;
 }
 
+/* TYPE FUNCNAME (ARGUMENT){ STATEMENT;}
+ * TYPE FUNCNAME (ARGUMENT);
+ *
+ *
+ * */
+void find_func(const string& code){
+    stack<char> S;
+    deque<string> history;
+    stringstream ss(code);
+    string word;
+    while(ss>>word){
 
+    }
 
+}
+void parsing_func(const string& code){
+
+}
 
 void read_code(istream &in, string &code){
     code.clear();

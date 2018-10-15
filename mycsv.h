@@ -75,7 +75,7 @@ void print_csv(){
         }
         lis = *(G_ff.G[name]);
         for(const auto& c: lis){
-            auto p = G_ft.G[name];
+            auto p = G_ft.G[c];
             if(p != NULL){
                 auto lis_ = *p;
                 for(const auto& ele: lis_)

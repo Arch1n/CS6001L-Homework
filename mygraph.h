@@ -12,13 +12,15 @@ using graph_base = map<string, edge_list *>;
 struct graph_t{
     graph_base G;
     map<string, bool> vis;
+    inline bool has_func(string s){return G.count(s);}
     void add_def(string);
     void add_edge(string, string);
     void set_unvisited();
 };
 
+
 void graph_t::add_def(string cur) {
-    if(!G.count(cur))
+    if(!has_func(cur))
         G[cur] = new edge_list;
 }
 

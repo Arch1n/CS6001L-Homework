@@ -1,34 +1,56 @@
-make_empty_list		list_t* make_empty_list(void);
-insert_at_head		list_t* insert_at_head(list_t*, data_t);
-insert_at_foot		list_t* insert_at_foot(list_t *list, data_t value);
-get_head		data_t get_head(list_t *list);
-get_tail		list_t* get_tail(list_t *list);
-create_graph		void create_graph(graph_t*);
-read_data		void read_data(graph_t*, char);
-free_graph		void free_graph(graph_t*);
-set_edge_unvisited		void set_edge_unvisited(graph_t*);
-is_finish		bool is_finish(graph_t*);
-has_unvisited_edge		bool has_unvisited_edge(graph_t*,int);
-expand		list_t* expand(graph_t*, char);
-calc_val		int calc_val(list_t*);
-print_stage_1		void print_stage_1(graph_t*, char);
-print_stage_2		void print_stage_2(graph_t*, char);
-print_circuit		void print_circuit(list_t*);
-main		int main(int argc, char *argv[]){
-create_graph		void create_graph(graph_t *G){
-read_data		void read_data(graph_t *G, char route_start){
-free_graph		void free_graph(graph_t *G){
-print_stage_1		void print_stage_1(graph_t *G, char start){
-print_stage_2		void print_stage_2(graph_t *G, char start){
-print_circuit		void print_circuit(list_t *circuit){
-expand		list_t* expand(graph_t *G, char start){
-has_unvisited_edge		bool has_unvisited_edge(graph_t *G,int id){
-is_finish		bool is_finish(graph_t *G){
-calc_val		int calc_val(list_t *circuit){
-set_edge_unvisited		void set_edge_unvisited(graph_t *G){
-make_empty_list		list_t* make_empty_list(void){
-is_empty_list		int is_empty_list(list_t *list){
-free_list		void free_list(list_t *list){
-insert_at_head		list_t* insert_at_head(list_t *list, data_t value){
-insert_at_foot		list_t* insert_at_foot(list_t *list, data_t value){
-get_head		data_t get_head(list_t *list){
+A:
+----------------------------------------------------
+add table a to func A
+add table aa to func A
+add table aaa to func A
+
+----------------------------------------------------
+B:
+----------------------------------------------------
+add table a to func B
+add table b to func B
+add table c to func B
+
+----------------------------------------------------
+C:
+----------------------------------------------------
+add table b to func C
+add table d to func C
+add table e to func C
+
+----------------------------------------------------
+D:
+----------------------------------------------------
+add table d to func D
+add table dd to func D
+add table ddd to func D
+
+----------------------------------------------------
+E:
+----------------------------------------------------
+add table e to func E
+add table ee to func E
+add table a to func E
+add table b to func E
+add table c to func E
+
+----------------------------------------------------
+ABC:
+----------------------------------------------------
+add edge :	ABC	->	A
+add edge :	ABC	->	B
+add edge :	ABC	->	C
+
+----------------------------------------------------
+DE:
+----------------------------------------------------
+add edge :	DE	->	D
+add edge :	DE	->	E
+
+----------------------------------------------------
+ABCDE:
+----------------------------------------------------
+add edge :	ABCDE	->	ABC
+add edge :	ABCDE	->	DE
+
+----------------------------------------------------

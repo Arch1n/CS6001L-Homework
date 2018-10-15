@@ -85,6 +85,9 @@
 		<Unit filename="/home/arch0n/CS6001L-Homework/main.cpp">
 			<Option target="CS6001L-Homework"/>
 		</Unit>
+		<Unit filename="/home/arch0n/CS6001L-Homework/mycsv.h">
+			<Option target="CS6001L-Homework"/>
+		</Unit>
 		<Unit filename="/home/arch0n/CS6001L-Homework/mygraph.h">
 			<Option target="CS6001L-Homework"/>
 		</Unit>

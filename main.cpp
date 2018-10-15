@@ -2,7 +2,7 @@
  * yin wei ming tian chong gou
  * GGWP
  *
- *
+ *\w+( )(?!\b(if|while|for)\b)\b\w+(?=\s*\()(\()(.+)(\))(;)
  * */
 
 #include <bits/stdc++.h>

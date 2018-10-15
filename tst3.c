@@ -1,11 +1,11 @@
 #include <mysql.h>
 #include <stdio.h>
 
-void A(int z){
+void A(int z=1){
     mysql_query(a,"select * from a,aa,aaa");
 }
 
-void B(int z){
+void B(){
     mysql_query(a,"select * from a,b,c");
 }
 
@@ -22,8 +22,8 @@ void E(int z){
 }
 
 void ABC(int z){
-    A(1);
-    B(2);
+    A();
+    B();
     C(3);
 }
 

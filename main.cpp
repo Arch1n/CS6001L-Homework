@@ -94,7 +94,8 @@ void find_sql_table(const string& body, const smatch& info){
 }
 
 void find_func_call(const string& body, const smatch& info){
-    regex word_regex("(?!\\b(if|while|for)\\b)\\b[a-zA-Z0-9_]*(?=\\s*)(\\()(.+)(\\))([,;])");
+    regex word_regex("([a-zA-Z0-9_]*)(\\s?)(\\()(.*)(\\))(\\s?)(;)");
+    //regex word_regex("(?!\\b(if|while|for)\\b)\\b[a-zA-Z0-9_]*(?=\\s*)(\\()(.+)(\\))([,;])");
     auto words_begin = sregex_iterator(body.begin(), body.end(), word_regex);
     auto words_end = sregex_iterator();
     string from = get_func_name(info.str());
@@ -132,7 +133,7 @@ string get_func_body(const string& s, const smatch& info){
 }
 
 void find_func_body(const string& s){
-    regex word_regex("[a-zA-Z0-9_]+\\*?( )([a-zA-Z0-9_]*)(\\s?)(\\()(.*)(\\))(\\s?)([\\{])");
+    regex word_regex("[a-zA-Z0-9_]+\\*?( )([a-zA-Z0-9_]*)(\\s?)(\\()(.*)(\\))(\\s?)(\\{)");
     //regex word_regex("[a-zA-Z0-9_](\\*?)+( )(?!\\b(if|while|for)\\b)\\b\\w*(?=\\s*\\()(\\()(.+)(\\))(\\s?)(\\{)");
     auto words_begin = sregex_iterator(s.begin(), s.end(), word_regex);
     auto words_end = sregex_iterator();

@@ -10,6 +10,7 @@ void B(){
 }
 
 void C(int z){
+    while(z--);
     mysql_query(a,"select * from b,d,e");
 }
 

@@ -29,36 +29,40 @@ void work(){
     int MarkR, MarkC;
     size_t M = row.size();
     size_t N = col.size();
-    size_t I = N/2;
-    size_t J = M/2;
-    int times = 200000;
+    size_t I = col.size()>>1;
+    size_t J ;
+    int times = 20000;
     do {
+        //cerr<<times<<" :I = "<<I<<endl;
         MarkR = 0;
         for(size_t id = 0; id < M; id++){
-            if(SumR(id, 0, I) > SumR(id, I+1, N))
+            if(SumR(id, 0, I) >= SumR(id, I, N))
                 row[id].mark = 1;
             else
                 row[id].mark = 2;
             if(MarkR != row[id].mark)
                 MarkR = 1;
         }
-        sort(row.begin(), row.end(), [](const node_t& a, const node_t& b){ return a.mark < b.mark;});
+        sort(row.begin(), row.end(), [](const node_t& a, const node_t& b){ return  a.mark < b.mark;});
         J = 0;
         for(const auto&c: row) J += c.mark == 1;
-
+        //for(const auto&c: row) cerr<<c.name<<" ";cerr<<endl;
+        //cerr<<times<<" :J = "<<J<<endl;
         MarkC = 0;
         for(size_t id = 0; id < N; id++){
-            if(SumC(id, 0, J) > SumC(id, J+1, M))
+            if(SumC(id, 0, J) >= SumC(id, J, M))
                 col[id].mark = 1;
             else
                 col[id].mark = 2;
             if(MarkC != col[id].mark)
                 MarkC = 1;
         }
-        sort(col.begin(), col.end(), [](const node_t& a, const node_t& b){ return a.mark < b.mark;});
+        sort(col.begin(), col.end(), [](const node_t& a, const node_t& b){ return  a.mark < b.mark;});
         I = 0;
         for(const auto&c: col) I += c.mark == 1;
+        //for(const auto&c: col) cerr<<c.name<<" ";cerr<<endl;
     } while (times-- && (MarkR == 1 || MarkC == 1));
+    cerr<<times<<endl;
 }
 
 
@@ -118,7 +122,8 @@ int SumR(size_t id, size_t l, size_t r){
     int cnt = 0;
     id = row[id].ori_id;
     for(size_t j = l; j < r; j++){
-        cnt += G[make_pair(id, j)];
+        size_t j_ = col[j].ori_id;
+        cnt += G[make_pair(id, j_)];
     }
     return cnt;
 }
@@ -127,7 +132,8 @@ int SumC(size_t id, size_t l, size_t r){
     int cnt = 0;
     id = col[id].ori_id;
     for(size_t j = l; j < r; j++){
-        cnt += G[make_pair(j, id)];
+        size_t j_ = row[j].ori_id;
+        cnt += G[make_pair(j_, id)];
     }
     return cnt;
 }
